@@ -1333,6 +1333,12 @@ class SupportCollectionTest extends TestCase
         $this->assertEquals(3, $c->count(function ($v) {
             return $v > 1;
         }));
+
+        $c = new Collection([ ['id'=>7, 'name'=>'foo'], ['id'=>12, 'name'=>'bar'], ['id'=>17, 'name'=>'baz']]);
+
+        $this->assertEquals(2, $c->count(function ($v) {
+            return substr($v['name'],0,1)==='b';
+        }));
     }
 
     public function testGettingSumFromCollection()
